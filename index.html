@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PunchClock</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>PunchClock</h1>
+    <div id="punchButton" class="punch-button"> <a href="#">PUNCH</a></div>
+    <div class="container">
+        
+         <!-- Analog Clock -->
+        <div class="clock-container">
+         <div class="clock">
+            <div class="clock-face">
+                <div class="hand hour-hand"></div>
+                <div class="hand minute-hand"></div>
+                <div class="hand second-hand"></div>
+                <div class="hour-label hour-1">1</div>
+                <div class="hour-label hour-2">2</div>
+                <div class="hour-label hour-3">3</div>
+                <div class="hour-label hour-4">4</div>
+                <div class="hour-label hour-5">5</div>
+                <div class="hour-label hour-6">6</div>
+                <div class="hour-label hour-7">7</div>
+                <div class="hour-label hour-8">8</div>
+                <div class="hour-label hour-9">9</div>
+                <div class="hour-label hour-10">10</div>
+                <div class="hour-label hour-11">11</div>
+                <div class="hour-label hour-12">12</div>
+            </div>
+        </div>
+        </div>
+        <div id="records">
+            <h2>Records</h2>
+            <ul id="recordList"></ul>
+        </div>
+        <div id="summary">
+            <h2>Summary</h2>
+            <p id="totalHours">Total Hours: 0</p>
+        </div>
+        <button id="exportButton">Export to Excel</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
