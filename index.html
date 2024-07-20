@@ -9,13 +9,18 @@
 </head>
 <body>
     <h1>PunchClock</h1>
-    <div id="punchButton" class="punch-button"> <a href="#">PUNCH</a></div>
+    <div class="page-container">
+    
     <div class="container">
+        <div id="punchButton" class="punch-button"> <a href="#">PUNCH</a></div>
+        <div class="machine-container">
         
          <!-- Analog Clock -->
         <div class="clock-container">
          <div class="clock">
+           
             <div class="clock-face">
+              
                 <div class="hand hour-hand"></div>
                 <div class="hand minute-hand"></div>
                 <div class="hand second-hand"></div>
@@ -31,19 +36,72 @@
                 <div class="hour-label hour-10">10</div>
                 <div class="hour-label hour-11">11</div>
                 <div class="hour-label hour-12">12</div>
+                 <!-- Minute Lines -->
+                <div class="minute-line minute-line-1"></div>
+                <div class="minute-line minute-line-2"></div>
+                <div class="minute-line minute-line-3"></div>
+                <div class="minute-line minute-line-4"></div>
+                <div class="minute-line minute-line-5"></div>
+                <div class="minute-line minute-line-6"></div>
+                <div class="minute-line minute-line-7"></div>
+                <div class="minute-line minute-line-8"></div>
+                <div class="minute-line minute-line-9"></div>
+                <div class="minute-line minute-line-10"></div>
+                <div class="minute-line minute-line-11"></div>
+                <div class="minute-line minute-line-12"></div>
+                <div class="minute-line minute-line-13"></div>
+                <div class="minute-line minute-line-14"></div>
+                <div class="minute-line minute-line-15"></div>
+                <div class="minute-line minute-line-16"></div>
+                <div class="minute-line minute-line-17"></div>
+                <div class="minute-line minute-line-18"></div>
+                <div class="minute-line minute-line-19"></div>
+                <div class="minute-line minute-line-20"></div>
+                <div class="minute-line minute-line-21"></div>
+                <div class="minute-line minute-line-22"></div>
+                <div class="minute-line minute-line-23"></div>
+                <div class="minute-line minute-line-24"></div>
+                <div class="minute-line minute-line-25"></div>
+                <div class="minute-line minute-line-26"></div>
+                <div class="minute-line minute-line-27"></div>
+                <div class="minute-line minute-line-28"></div>
+                <div class="minute-line minute-line-29"></div>
+                <div class="minute-line minute-line-30"></div>
+                <div class="minute-line minute-line-31"></div>
+                <div class="minute-line minute-line-32"></div>
+                <div class="minute-line minute-line-33"></div>
+                <div class="minute-line minute-line-34"></div>
+                <div class="minute-line minute-line-35"></div>
+                <div class="minute-line minute-line-36"></div>
+                <div class="minute-line minute-line-37"></div>
+                <div class="minute-line minute-line-38"></div>
+                <div class="minute-line minute-line-39"></div>
+                <div class="minute-line minute-line-40"></div>
+                <div class="minute-line minute-line-41"></div>
+                <div class="minute-line minute-line-42"></div>
+                <div class="minute-line minute-line-43"></div>
+                <div class="minute-line minute-line-44"></div>
+                <div class="minute-line minute-line-45"></div>
+                <div class="minute-line minute-line-46"></div>
+                <div class="minute-line minute-line-47"></div>
+                <div class="minute-line minute-line-48"></div>
             </div>
         </div>
         </div>
-        <div id="records">
-            <h2>Records</h2>
-            <ul id="recordList"></ul>
         </div>
-        <div id="summary">
-            <h2>Summary</h2>
-            <p id="totalHours">Total Hours: 0</p>
-        </div>
-        <button id="exportButton">Export to Excel</button>
     </div>
+    <div class="records-container">
+    <div id="records">
+        <h2>Records</h2>
+        <ul id="recordList"></ul>
+    </div>
+    <div id="summary">
+        <h2>Summary</h2>
+        <p id="totalHours">Total Hours: 0</p>
+    </div>
+    <button id="exportButton">Export to Excel</button>
+</div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="index.js"></script>
 </body>
