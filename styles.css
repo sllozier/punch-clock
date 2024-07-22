@@ -7,7 +7,7 @@ body {
 }
 .page-container{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -21,9 +21,10 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width:50%;
+    width:60%;
     /*position: relative; Make the container a positioning context*/
 }
+/* Machine Styles */
 .machine-container{
     display: flex;
     flex-direction: column;
@@ -32,24 +33,47 @@ body {
     margin: 15px auto 20px;
     padding: 20px;
     background-color: #577F76;
-    border-radius: 8px;
+
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- width: 90%;
- height:100%;
+    width: 70%;
+    height:100%;
+    position: relative;
+    top: -10px; /* Adjust to match the height of the machine-top slant */
+    z-index: 0;
+}
+.machine-top{
+    width: 82%;
+    height: 60px;
+    background: linear-gradient(to right, #577F76, #759486);
+    clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+    position: relative;
+    top: 6px;
+    left: -4%;
+    z-index: 1;
+    
 }
 
-.clock-container{
-    display: flex;
-   width: 75%;
- 
-   border-radius: 8px;
-    background-color: white;
+.machine-side{
+        width: 96px;
+        height: 112.5%;
+        background: linear-gradient(to bottom, #577F76, #759486);
+        position: absolute;
+        clip-path: polygon(0 0, 100% 11%, 100% 100%, 0% 90%);
+        position: absolute;
+        top: -60px; /* Adjust to position it correctly */
+        left: -95px;
+        transform-origin: top right;
+       
 }
+
+
+
+/* Records Styles */
 .records-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     text-align: center;
     width: 50%;
     margin: 2rem;
@@ -59,13 +83,71 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-family: 'Courier New', Courier, monospace;
+    height: 400px; /* Set a fixed height */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+.clear-button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.clear-button:hover {
+    background-color: darkred;
+}
+
+.records{
+    width: 90%;
+}
+.records-columns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.in-records, .out-records {
+    width: 100%; /* Adjust width to fit two columns */
+}
+
+.in-records h3, .out-records h3 {
+    margin-bottom: 10px;
+}
+
+#inRecordList, #outRecordList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#inRecordList li, #outRecordList li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#recordList {
+    column-count: 2; /* Create two columns */
+    column-gap: 20px; /* Gap between columns */
+    width: 100%;
+}
+
+#recordList li {
+    break-inside: avoid; /* Avoid breaking records between columns */
 }
 
 /* Punch Button Styles */
 .punch-button{
-    position:relative;
-    display:inline-block;
-   margin-top:20px;
+    position: absolute;
+    top: 110px; /* Adjusted to place the button correctly on top of machine-top */
+    left: 49%;
+    transform: translateX(-50%);
+    z-index: 2;
    
   }
   
@@ -73,14 +155,14 @@ body {
     color:white;
     font-family:'Orbitron', Arial, sans-serif;
     font-weight:bold;
-    font-size:32px;
-    text-align: center;
+    font-size:24px;
     text-decoration:none;
     background-color:#7A8589;
     display:block;
     position:relative;
     padding:10px 40px;
-    
+    height: 1rem;
+    width: 4rem;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     text-shadow: 0px 1px 0px #000;
     filter: dropshadow(color=#000, offx=0px, offy=1px);
@@ -153,6 +235,13 @@ li button {
 }
 
 /* Analog Clock Styles */
+.clock-container{
+    display: flex;
+   width: 85%;
+ 
+   border-radius: 8px;
+    background-color: white;
+}
 .clock {
     width: 600px;
     height: 350px;
@@ -325,4 +414,20 @@ li button {
 
 .clock .hour-11 { top: 25px; left: 37%; transform: translate(-50%, -50%); }
 .clock .hour-11::before { top: 35px; left: 75%; height: 20px; transform: rotate(330deg); transform-origin: top; }
+
+.export-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 10px;
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.export-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
 

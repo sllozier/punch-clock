@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const punchButton = document.getElementById('punchButton');
-    const recordList = document.getElementById('recordList');
+    const clearButton = document.getElementById('clearButton');
+    const inRecordList = document.getElementById('inRecordList');
+    const outRecordList = document.getElementById('outRecordList');
     const totalHoursElem = document.getElementById('totalHours');
     const exportButton = document.getElementById('exportButton');
     let records = JSON.parse(localStorage.getItem('records')) || [];
@@ -31,10 +33,36 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderRecords = () => {
-        recordList.innerHTML = '';
+        inRecordList.innerHTML = '';
+        outRecordList.innerHTML = '';
         records.forEach((record, index) => {
             const li = document.createElement('li');
             li.textContent = `${record.state.toUpperCase()} - ${formatDateTime(record.time)}`;
+            li.setAttribute('data-index', index);
+            li.setAttribute('contenteditable', false);
+
+            li.addEventListener('click', () => {
+                li.setAttribute('contenteditable', true);
+                li.focus();
+            });
+
+            li.addEventListener('blur', () => {
+                li.setAttribute('contenteditable', false);
+                const newValue = li.textContent.split(' - ')[1];
+                if (newValue) {
+                    records[index].time = new Date(newValue).toISOString();
+                    saveRecords();
+                    renderRecords();
+                    calculateTotalHours();
+                }
+            });
+
+            li.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    li.blur();
+                }
+            });
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'x';
             deleteButton.addEventListener('click', () => {
@@ -44,7 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 calculateTotalHours();
             });
             li.appendChild(deleteButton);
-            recordList.appendChild(li);
+            if (record.state === 'in') {
+                inRecordList.appendChild(li);
+            } else {
+                outRecordList.appendChild(li);
+            }
         });
     };
 
@@ -101,8 +133,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     punchButton.addEventListener('click', () => {
         const now = new Date().toISOString();
-        records.push({ state: currentState, time: now });
-        currentState = currentState === 'in' ? 'out' : 'in';
+        if (records.length === 0 || currentState === 'in') {
+            records.push({ state: 'in', time: now });
+            currentState = 'out';
+        } else {
+            records.push({ state: 'out', time: now });
+            currentState = 'in';
+        }
+        saveRecords();
+        renderRecords();
+        calculateTotalHours();
+    });
+
+    clearButton.addEventListener('click', () => {
+        records = [];
         saveRecords();
         renderRecords();
         calculateTotalHours();
@@ -137,6 +181,3 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(setDate, 1000);
     setDate(); // Initial call to set the time immediately
 });
-
-
-
